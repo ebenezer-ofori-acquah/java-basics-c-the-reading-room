@@ -1,3 +1,7 @@
+/**
+ * Records a member borrowing an item, including the loan ID, duration, and status.
+ * The constructor starts each loan as active; getters expose its details.
+ */
 public class Loan {
     private int loanId;
     private Member member;

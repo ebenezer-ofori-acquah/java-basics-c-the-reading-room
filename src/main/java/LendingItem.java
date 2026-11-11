@@ -1,3 +1,7 @@
+/**
+ * Represents an item available for lending, with an ID, title, type, and optional current loan.
+ * Provides an availability check and getters for the item's identifying details.
+ */
 public class LendingItem {
     private int itemId;
     private String title;

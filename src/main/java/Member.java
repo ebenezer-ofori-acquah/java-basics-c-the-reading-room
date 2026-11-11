@@ -1,3 +1,7 @@
+/**
+ * Represents a reading-room member using an ID, name, and member type.
+ * Provides getters for these three member details.
+ */
 public class Member {
     private int memberId;
     private String name;
