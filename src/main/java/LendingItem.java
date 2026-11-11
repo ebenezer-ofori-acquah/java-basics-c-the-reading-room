@@ -31,6 +31,10 @@ public class LendingItem {
         return itemType;
     }
 
+    public Loan getCurrentLoan() {
+        return currentLoan;
+    }
+
     //checks if the item is available and assigns a loan to it; throws an exception if the item is already on loan
     public void assignLoan(Loan loan){
         if (!isAvailable()) {
