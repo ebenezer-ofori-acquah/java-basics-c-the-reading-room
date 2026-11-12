@@ -23,33 +23,28 @@ Supporting enums will represent `ItemType`, `MemberType` and `LoanStatus`.
 ```mermaid
 classDiagram
     class Library {
-        -List~Member~ members
-        -List~LendingItem~ items
-        -List~Loan~ loans
         +borrow(Member, LendingItem)
         +returnItem(LendingItem)
+        +printReport()
     }
 
     class Member {
-        -int id
-        -String name
-        -MemberType type
+        -id
+        -name
+        -type
     }
 
     class LendingItem {
-        -int id
-        -String title
-        -ItemType type
-        -Loan currentLoan
+        -id
+        -title
+        -type
         +isAvailable() boolean
     }
 
     class Loan {
-        -int id
-        -Member member
-        -LendingItem item
-        -int loanDays
-        -LoanStatus status
+        -id
+        -loanDays
+        -status
     }
 
     class LoanPolicy {
@@ -61,14 +56,14 @@ classDiagram
     class AudioKitLoanPolicy
     class ELoanPolicy
 
-    Library "1" o-- "*" Member
-    Library "1" o-- "*" LendingItem
-    Library "1" o-- "*" Loan
-
-    Loan "*" --> "1" Member
-    Loan "*" --> "1" LendingItem
-    LendingItem "0..1" --> "0..1" Loan : current active loan
-
+    Library --> Member
+    Library --> LendingItem
+    Library --> Loan
+    
+    Loan --> Member
+    Loan --> LendingItem
+    LendingItem --> Loan : tracks active loan
+    
     LoanPolicy <|.. BookLoanPolicy
     LoanPolicy <|.. AudioKitLoanPolicy
     LoanPolicy <|.. ELoanPolicy
