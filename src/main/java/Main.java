@@ -1,12 +1,5 @@
 public class Main {
-    private static void pause(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
+    
     public static void main(String[] args) {
 
         System.out.println("=== THE READING ROOM: SYSTEM DIAGNOSTIC SUITE ===\n");
@@ -25,7 +18,6 @@ public class Main {
         library.addItem(audioKit);
 
         System.out.println("[Setup] Complete. Beginning step-by-step execution...\n");
-        pause(1500);
 
         // --- TEST 1: Successful Borrowing & Policy Calculation ---
         System.out.println("--- TEST 1: Successful Borrowing ---");
@@ -39,7 +31,8 @@ public class Main {
         }
 
         System.out.println();
-        pause(2000);
+
+        
         // --- TEST 2: Duplicate Borrowing Guard (Error Case A) ---
         System.out.println("--- TEST 2: Duplicate Borrowing Enforcement ---");
         try {
@@ -51,7 +44,7 @@ public class Main {
         }
 
         System.out.println();
-        pause(2000);
+
 
         // --- TEST 3: Invalid Return Guard (Error Case B) ---
         System.out.println("--- TEST 3: Invalid Return Enforcement ---");
@@ -64,7 +57,7 @@ public class Main {
         }
 
         System.out.println();
-        pause(2000);
+
 
         // --- TEST 4: Legitimate Return & State Recovery ---
         System.out.println("--- TEST 4: Legitimate Return Execution ---");
@@ -78,7 +71,7 @@ public class Main {
         }
 
         System.out.println();
-        pause(2000);
+
 
         // --- TEST 5: Subsequent Borrowing After Release ---
         System.out.println("--- TEST 5: Post-Return Circulation Check ---");
