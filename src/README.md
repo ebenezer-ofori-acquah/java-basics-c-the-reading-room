@@ -72,6 +72,30 @@ classDiagram
 
 *Note: `ELoanPolicy` is shown as a future extension, not an implemented class.*
 
+### Concrete Guide for Adding E-Loans (Future Work)
+
+`ELoanPolicy` is not implemented. To add it without changing `Library`'s
+borrowing workflow:
+
+1. **Update the `ItemType` Enum:**
+   Add `E_LOAN` as a new controlled category value:
+   ```java
+   public enum ItemType {
+       BOOK, AUDIO_KIT, E_LOAN
+   }
+   ```
+
+2. **Implement `LoanPolicy`:**
+   Create an `ELoanPolicy` class to define e-loan rules, for example:
+   ```java
+   public class ELoanPolicy implements LoanPolicy {
+       @Override
+       public int calculateLoanDays(Member member) {
+           return 3;
+       }
+    }
+    ```
+
 ## 3. Key Design Decisions
 
 - **Encapsulation:** Important fields and collections will be private, with controlled methods for accessing and modifying state.
@@ -96,3 +120,28 @@ The refined architecture introduces these changes:
 These decisions improve encapsulation, consistency and extensibility, particularly when introducing future e-loans.
 
 Further architectural changes and their justifications will be recorded here as implementation progresses.
+
+## Setup, Build, and Execution
+
+### Prerequisites
+* Java Development Kit (JDK) 21 or higher
+* Maven 3.9 or higher (optional)
+
+From the repository root, build and run the actual diagnostic entry point:
+
+```shell
+mvn clean package
+java -cp target/classes Main
+```
+
+Or compile directly without Maven:
+
+```shell
+javac -d target/classes src/main/java/*.java
+java -cp target/classes Main
+```
+
+`Library` reports invalid operations with descriptive unchecked exceptions.
+It does not log them; callers should catch these exceptions and show the
+message to a volunteer or send it to their logging system. `Main` demonstrates
+catching and displaying expected lending errors.

@@ -9,7 +9,7 @@ public class Loan {
     private int loanDays;
     private LoanStatus status;
 
-    public Loan(int loanId, Member member, LendingItem item, int loanDays){
+    public Loan(int loanId, Member member, LendingItem item, int loanDays) {
         this.loanId = loanId;
         this.member = member;
         this.item = item;
@@ -37,7 +37,7 @@ public class Loan {
         return status;
     }
 
-    public void markAsReturned(){
+    public void markAsReturned() {
         this.status = LoanStatus.RETURNED;
     }
 

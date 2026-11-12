@@ -1,4 +1,3 @@
-// loan policy for audio kits
 public class AudioKitLoanPolicy implements LoanPolicy {
     @Override
     public int calculateLoanDays(Member member) {
